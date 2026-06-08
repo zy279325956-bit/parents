@@ -1,14 +1,14 @@
 [
   {
+    "src": "musics/%E8%8A%B1%E5%A5%BD%E6%9C%88%E5%9C%86.mp3",
+    "title": "花好月圆"
+  },
+  {
     "src": "musics/%E6%9C%80%E6%B5%AA%E6%BC%AB%E7%9A%84%E4%BA%8B.mp3",
     "title": "最浪漫的事"
   },
   {
     "src": "musics/%E6%9C%88%E4%BA%AE%E4%BB%A3%E8%A1%A8%E6%88%91%E7%9A%84%E5%BF%83.mp3",
     "title": "月亮代表我的心"
-  },
-  {
-    "src": "musics/%E8%8A%B1%E5%A5%BD%E6%9C%88%E5%9C%86.mp3",
-    "title": "花好月圆"
-  }
+  }  
 ]
