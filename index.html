@@ -2,405 +2,209 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<title>郑尧 ❤ 黄梦婷 · 婚礼喜帖</title>
+<title>郑尧 · 黄梦婷 · 婚礼请柬</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#9e1b1b">
+<meta name="theme-color" content="#8c2b22">
 <meta name="description" content="诚邀您参加郑尧与黄梦婷的婚礼 · 2026.10.04 · 安徽广德老四川大酒店">
-<!-- 仅加载一个轻量英文花体，走国内可访问的 Google Fonts 镜像；失败自动回退系统字体 -->
-<link rel="preconnect" href="https://fonts.loli.net" crossorigin>
-<link href="https://fonts.loli.net/css2?family=Great+Vibes&family=Cormorant+Garamond:ital@0;1&display=swap" rel="stylesheet">
 <style>
+  /* 父母版：素雅中式请柬（区别于子女版的红金喜庆风），以楷体 + 米纸底 + 沉稳绛红为主，删繁就简。 */
   :root{
-    --red:#9e1b1b;
-    --red-deep:#7a1414;
-    --gold:#c8a15a;
-    --gold-dark:#9c7726;
-    --gold-light:#e7cf95;
-    --cream:#fbf7ef;
-    --cream-2:#f4ebda;
-    --ink:#2f2019;          /* 正文加深，老人更易读 */
-    --ink-soft:#574339;
-    --shadow:0 12px 30px rgba(120,40,20,.12);
+    --paper:#f6f1e6;          /* 米纸底 */
+    --paper-2:#efe6d3;        /* 卡片略深 */
+    --ink:#34291e;            /* 墨色正文 */
+    --ink-soft:#6c5a47;       /* 次级文字 */
+    --red:#8c2b22;            /* 绛红，沉稳不刺眼 */
+    --red-deep:#6f211a;
+    --line:#c9b489;           /* 低饱和描边/分隔，少量使用 */
     --kai:"STKaiti","KaiTi","楷体","Kaiti SC","Noto Serif SC",serif;
     --serif:"Noto Serif SC","Songti SC","STSong",STZhongsong,serif;
-    --script:"Great Vibes","Snell Roundhand","Apple Chancery","Brush Script MT",cursive;
-    --en:"Cormorant Garamond",Georgia,"Times New Roman",serif;
     --sans:"PingFang SC","Microsoft YaHei","微软雅黑","Segoe UI",system-ui,sans-serif;
   }
 
   *{margin:0;padding:0;box-sizing:border-box;}
   html{scroll-behavior:smooth;}
   body{
-    font-family:var(--sans);
-    background:var(--cream);
+    font-family:var(--kai);
+    background:var(--paper);
     color:var(--ink);
-    line-height:1.95;            /* 行距放大，便于阅读 */
-    font-size:18px;              /* 整体基准字号上调 */
+    line-height:2;
+    font-size:18px;               /* 中老年友好：基准字号偏大 */
     -webkit-font-smoothing:antialiased;
     overflow-x:hidden;
   }
   img{display:block;}
 
-  .container{max-width:780px;margin:0 auto;padding:0 clamp(1.2rem,5vw,1.9rem);}
+  .container{max-width:720px;margin:0 auto;padding:0 clamp(1.3rem,5vw,2rem);}
 
-  /* ============ 通用：英文小标题 / 金线 ============ */
-  .kicker{
-    font-family:var(--en);
-    font-size:clamp(.82rem,2.6vw,.98rem);
-    letter-spacing:.42em;
-    text-transform:uppercase;
-    color:var(--gold-dark);
-    padding-left:.42em;
+  /* 通用细分隔线（中置小符号） */
+  .rule{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    margin:clamp(1.4rem,4vw,2rem) 0;
   }
+  .rule::before,.rule::after{
+    content:"";height:1px;width:clamp(40px,18vw,110px);background:var(--line);
+  }
+  .rule i{font-style:normal;color:var(--red);font-size:1.05rem;letter-spacing:.2em;}
 
-  /* ============ 封面（文字封面） ============ */
+  /* ============ 封面 ============ */
   .hero{
     position:relative;
-    min-height:100svh;
-    min-height:100vh;
+    min-height:100svh;min-height:100vh;
     display:flex;align-items:center;justify-content:center;
     text-align:center;
-    padding:clamp(2.4rem,8vw,4rem) 1.2rem;
-    background:
-      radial-gradient(120% 90% at 50% 8%,#ffffff 0%,var(--cream) 46%,var(--cream-2) 100%);
-    overflow:hidden;
+    padding:clamp(2.6rem,9vw,4.5rem) 1.3rem;
   }
-  /* 巨大囍字水印 */
-  .hero::before{
-    content:"囍";
-    position:absolute;left:50%;top:54%;transform:translate(-50%,-50%);
-    font-family:var(--kai);
-    font-size:min(120vw,150vh);
-    color:rgba(158,27,27,.045);
-    pointer-events:none;line-height:1;z-index:0;
+  .hero-inner{
+    border:1px solid var(--line);
+    padding:clamp(2.2rem,8vw,3.6rem) clamp(1.4rem,6vw,2.8rem);
+    max-width:560px;width:100%;
+    animation:rise 1s ease both;
   }
-  /* 细金双线边框 */
-  .hero-frame{
-    position:absolute;inset:clamp(12px,3.4vw,26px);
-    border:1px solid rgba(200,161,90,.6);
-    box-shadow:inset 0 0 0 3px rgba(200,161,90,.18);
-    border-radius:6px;pointer-events:none;z-index:1;
+  .hero-label{
+    font-size:clamp(1rem,3.6vw,1.2rem);letter-spacing:.5em;
+    color:var(--red);padding-left:.5em;
   }
-  .hero-frame::before,.hero-frame::after{
-    content:"❖";position:absolute;left:50%;transform:translateX(-50%);
-    color:var(--gold);font-size:1.1rem;background:var(--cream);padding:0 .5rem;
+  .hero-names{
+    margin-top:clamp(1.4rem,5vw,2rem);
+    font-weight:400;color:var(--red);
+    font-size:clamp(2.6rem,13vw,4.6rem);
+    letter-spacing:.05em;line-height:1.15;white-space:nowrap;
   }
-  .hero-frame::before{top:-.62rem;}
-  .hero-frame::after{bottom:-.62rem;}
-
-  .hero-content{position:relative;z-index:2;animation:rise 1.1s ease both;}
-  .hero-title{
-    display:flex;align-items:center;justify-content:center;gap:.6rem;
-    font-family:var(--kai);
-    font-size:clamp(1.3rem,5vw,1.8rem);
-    letter-spacing:.42em;color:var(--red);
-    margin-bottom:1.05rem;
+  .hero-names .sep{color:var(--line);font-size:.5em;vertical-align:.2em;margin:0 .28em;}
+  .hero-rel{
+    margin-top:1.1rem;
+    font-size:clamp(1.12rem,4.4vw,1.42rem);color:var(--ink);letter-spacing:.08em;
   }
-  .hero-title span{padding-left:.42em;}
-  .hero-title::before,.hero-title::after{
-    content:"";height:1px;width:clamp(22px,7vw,42px);
-    background:linear-gradient(90deg,transparent,var(--gold),transparent);
+  .hero-rel b{color:var(--red-deep);font-weight:600;margin-right:.22em;}
+  .hero-rel .gap{display:inline-block;width:1.5em;}
+  .hero-poem{
+    margin-top:1.3rem;
+    font-size:clamp(1.06rem,4vw,1.32rem);color:var(--ink-soft);
+    letter-spacing:.14em;min-height:1.4em;
   }
-  .hero-content .kicker{display:block;margin-bottom:1.4rem;}
-
-  .names{
-    font-family:var(--kai);
-    font-weight:400;
-    color:var(--red);
-    font-size:clamp(2.6rem,13.5vw,5.2rem);
-    letter-spacing:.04em;
-    line-height:1.12;
-    white-space:nowrap;
-    text-shadow:0 3px 14px rgba(158,27,27,.14);
-  }
-  .names .amp{
-    display:inline-block;
-    color:var(--gold);
-    font-size:.52em;
-    vertical-align:.14em;
-    margin:0 .14em;
-    text-shadow:none;
-  }
-  .names-en{
-    font-family:var(--script);
-    color:var(--gold-dark);
-    font-size:clamp(1.8rem,7vw,2.8rem);
-    line-height:1.1;
-    margin-top:.5rem;
-  }
-
-  /* 关系称谓牌：把「儿子/儿媳 或 女婿/小女」与名字配对，老人一眼看懂 */
-  .name-tags{
-    display:flex;justify-content:center;flex-wrap:wrap;
-    gap:clamp(.7rem,3.6vw,1.5rem);
-    margin-top:1rem;
-  }
-  .ntag{
-    font-family:var(--kai);
-    font-size:clamp(1.1rem,4.4vw,1.5rem);
-    color:var(--red-deep);letter-spacing:.05em;
-    background:linear-gradient(180deg,#ffffff,#fdf2da);
-    border:1px solid var(--gold);
-    border-radius:999px;
-    padding:.32em 1.1em;
-    box-shadow:0 5px 14px rgba(169,132,47,.18);
-  }
-  .ntag b{color:var(--gold-dark);font-weight:700;margin-right:.28em;}
-
-  .hero-tagline{
-    margin-top:1rem;
-    font-family:var(--kai);
-    font-size:clamp(1.15rem,4.2vw,1.5rem);
-    letter-spacing:.16em;color:var(--ink-soft);
-    min-height:1.4em;
-  }
-  .hero-rule{
-    display:flex;align-items:center;justify-content:center;gap:.9rem;
-    margin:1.5rem 0 1.2rem;color:var(--gold);
-  }
-  .hero-rule span{height:1px;width:clamp(40px,16vw,90px);}
-  .hero-rule span:first-child{background:linear-gradient(90deg,transparent,var(--gold));}
-  .hero-rule span:last-child{background:linear-gradient(90deg,var(--gold),transparent);}
-  .hero-rule i{font-style:normal;color:var(--red);font-size:1.1rem;}
-
-  .hero-date{
-    display:flex;flex-direction:column;align-items:center;gap:.3rem;
-    font-family:var(--serif);letter-spacing:.14em;color:var(--ink);
-  }
+  .hero-date{margin-top:.3rem;font-family:var(--serif);}
   .hero-date b{
-    color:var(--red);font-weight:600;
-    font-size:clamp(1.7rem,7vw,2.4rem);letter-spacing:.2em;
+    display:block;color:var(--red);font-weight:600;
+    font-size:clamp(1.5rem,6.6vw,2.1rem);letter-spacing:.18em;
   }
-  .hero-date span{font-size:clamp(1.12rem,4.2vw,1.4rem);color:var(--ink-soft);letter-spacing:.16em;}
+  .hero-date span{
+    display:block;margin-top:.3rem;color:var(--ink-soft);
+    font-size:clamp(1.06rem,4vw,1.3rem);letter-spacing:.12em;
+  }
   .hero-lunar{
-    margin-top:.5rem;
-    font-family:var(--kai);
-    font-size:clamp(1.02rem,3.6vw,1.24rem);
-    letter-spacing:.18em;color:var(--ink-soft);
+    margin-top:.4rem;font-size:clamp(1rem,3.5vw,1.18rem);
+    color:var(--ink-soft);letter-spacing:.16em;
   }
-
-  /* 倒计时（浅底主题） */
-  .cd-title{
-    margin-top:1.8rem;
-    font-family:var(--kai);
-    font-size:clamp(1.12rem,3.8vw,1.34rem);
-    letter-spacing:.22em;color:var(--gold-dark);
-  }
-  .countdown{
-    margin-top:.95rem;
-    display:flex;justify-content:center;flex-wrap:wrap;
-    gap:clamp(.6rem,2.4vw,1.1rem);
-  }
-  .cd-cell{
-    min-width:74px;padding:.7rem .85rem;
-    border:1px solid var(--gold);
-    border-radius:14px;
-    background:linear-gradient(180deg,#ffffff,#fdf6ea);
-    box-shadow:0 8px 18px rgba(169,132,47,.16);
-  }
-  .cd-num{
-    font-family:var(--serif);
-    font-size:clamp(1.55rem,6vw,2.25rem);
-    font-weight:600;color:var(--red);line-height:1;
-  }
-  .cd-label{font-size:.74rem;letter-spacing:.16em;color:var(--gold-dark);margin-top:.45rem;}
-  #cd-msg{
-    margin-top:1.3rem;font-family:var(--kai);
-    font-size:1.3rem;color:var(--red);letter-spacing:.1em;min-height:1.2em;
-  }
-  #cd-msg.cd-final{
-    margin-top:1.6rem;
-    font-size:clamp(1.6rem,6.4vw,2.2rem);letter-spacing:.18em;
-    color:var(--red);text-shadow:0 2px 12px rgba(158,27,27,.16);
-  }
-
   .scroll-cue{
-    position:absolute;left:50%;bottom:1.4rem;transform:translateX(-50%);
-    z-index:2;color:var(--gold-dark);
-    font-size:.82rem;letter-spacing:.3em;text-align:center;
-    animation:bob 2.4s ease-in-out infinite;
+    position:absolute;left:50%;bottom:1.3rem;transform:translateX(-50%);
+    color:var(--ink-soft);font-size:.8rem;letter-spacing:.3em;text-align:center;opacity:.7;
   }
-  .scroll-cue .arrow{display:block;margin-top:.35rem;font-size:1.2rem;}
+  .scroll-cue .arrow{display:block;margin-top:.3rem;font-size:1.1rem;}
 
-  @keyframes rise{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
-  @keyframes bob{0%,100%{transform:translateX(-50%) translateY(0);}50%{transform:translateX(-50%) translateY(8px);}}
+  @keyframes rise{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:none;}}
 
-  /* ============ 开篇（囍 + 标题 + 祝福） ============ */
-  .lives-intro{text-align:center;margin:clamp(3rem,9vw,5rem) 0 clamp(1.7rem,4.5vw,2.4rem);}
-  .lives-intro .seal{margin-bottom:1.1rem;}
-  .lives-intro .invite-head{margin:0;}
-  .lives-bless{
-    margin-top:.8rem;font-family:var(--kai);color:var(--gold-dark);
-    font-size:clamp(1.15rem,4.2vw,1.46rem);letter-spacing:.22em;
-  }
+  /* ============ 开篇 ============ */
+  .intro{text-align:center;margin:clamp(3rem,9vw,5rem) 0 clamp(1.6rem,4.5vw,2.3rem);}
   .seal{
-    font-family:var(--kai);
     display:inline-flex;align-items:center;justify-content:center;
-    width:72px;height:72px;border-radius:50%;
-    background:var(--red);color:var(--gold-light);
-    font-size:2.2rem;
-    box-shadow:0 8px 22px rgba(158,27,27,.32);
-    border:1px solid var(--gold);
+    width:58px;height:58px;border-radius:50%;
+    background:var(--red);color:#f4e7c9;font-size:1.7rem;margin-bottom:1rem;
+  }
+  .intro-head{
+    color:var(--red);
+    font-size:clamp(2rem,8.6vw,2.9rem);letter-spacing:.16em;line-height:1.25;
+  }
+  .intro-bless{
+    margin-top:.7rem;color:var(--ink-soft);
+    font-size:clamp(1.08rem,4vw,1.34rem);letter-spacing:.2em;
   }
 
-  /* ============ 婚纱照（两图一上一下） ============ */
-  .life{
-    position:relative;
-    border-radius:16px;overflow:hidden;
-    background:#fff;
-    border:1px solid rgba(200,161,90,.55);
-    box-shadow:var(--shadow);
+  /* ============ 婚纱照 ============ */
+  .photo{border:1px solid var(--line);background:#fff;overflow:hidden;}
+  .photo img{width:100%;height:auto;display:block;}
+  .photo-link{text-align:center;margin:clamp(1.1rem,3.2vw,1.6rem) 0;}
+  .photo-link .pl-top{
+    display:block;color:var(--ink-soft);
+    font-size:clamp(1.05rem,3.9vw,1.32rem);letter-spacing:.12em;margin-bottom:.32rem;
   }
-  .life img{width:100%;height:auto;display:block;}
-  .life::after{
-    content:"";position:absolute;inset:7px;border:1px solid rgba(231,207,149,.5);
-    border-radius:11px;pointer-events:none;z-index:2;
-  }
+  .photo-link .pl-cn{color:var(--red);font-size:clamp(1.2rem,4.6vw,1.5rem);letter-spacing:.3em;}
 
-  /* 中部连接符 */
-  .life-link{
-    text-align:center;font-family:var(--kai);color:var(--red);
-    margin:clamp(.85rem,2.3vw,1.15rem) 0;position:relative;line-height:1.35;
+  /* ============ 进场动画（仅淡入 + 轻微上移） ============ */
+  .reveal{opacity:0;transform:translateY(14px);transition:opacity .7s ease,transform .7s ease;}
+  .reveal.in{opacity:1;transform:none;}
+
+  /* ============ 邀请正文 ============ */
+  .invite{margin-top:clamp(2.8rem,8vw,4.2rem);text-align:center;}
+  .invite-guest{
+    color:var(--ink-soft);line-height:1.7;
+    font-size:clamp(1.25rem,4.8vw,1.65rem);letter-spacing:.05em;margin-bottom:1.5rem;
   }
-  .life-link .ll-top{
-    display:block;font-family:var(--kai);color:var(--gold-dark);
-    font-size:clamp(1.1rem,3.9vw,1.36rem);letter-spacing:.14em;margin-bottom:.42rem;
+  .invite-guest .ig-fix{margin:0 .35em;}
+  .invite-guest .ig-name{display:inline-block;position:relative;padding:0 .14em .16em;}
+  .invite-guest .ig-name b{color:var(--red);font-weight:600;font-size:1.5em;letter-spacing:.04em;}
+  .invite-guest .ig-name i{font-style:normal;color:var(--ink-soft);font-size:.9em;margin-left:.1em;}
+  .invite-guest .ig-name::after{
+    content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--line);
   }
-  .life-link .ll-cn{
-    display:inline-block;background:var(--cream);padding:0 1rem;
-    position:relative;z-index:1;
-    font-size:clamp(1.2rem,4.4vw,1.5rem);letter-spacing:.16em;
+  .invite-body{
+    font-family:var(--serif);color:var(--ink);
+    font-size:clamp(1.18rem,4.4vw,1.5rem);letter-spacing:.04em;line-height:2.1;
   }
-  .life-link .ll-en{
-    display:block;font-family:var(--script);color:var(--gold-dark);
-    font-size:clamp(1.15rem,4vw,1.5rem);line-height:1.2;margin-top:.42rem;
+  .invite-formal{
+    margin-top:.3rem;color:var(--ink-soft);
+    font-size:clamp(1.08rem,4vw,1.32rem);letter-spacing:.16em;
   }
-  .life-link::before{
-    content:"";position:absolute;left:6%;right:6%;top:50%;transform:translateY(-50%);height:1px;
-    background:linear-gradient(90deg,transparent,var(--gold),transparent);
+  .invite-sign{
+    margin-top:1rem;color:var(--red);
+    font-size:clamp(1.3rem,5vw,1.7rem);letter-spacing:.1em;
   }
 
   /* ============ 婚礼细节 ============ */
   .details{margin-top:clamp(2.6rem,7vw,4rem);}
   .detail-card{
-    background:linear-gradient(180deg,#fff,#fdf7ec);
-    border:1px solid rgba(200,161,90,.55);
-    border-radius:18px;
-    padding:clamp(2rem,5vw,2.8rem) clamp(1.4rem,5vw,2.3rem);
-    box-shadow:var(--shadow);text-align:center;
-    position:relative;
+    border:1px solid var(--line);background:var(--paper-2);
+    padding:clamp(1.9rem,6vw,2.8rem) clamp(1.3rem,5vw,2.1rem);text-align:center;
   }
-  .detail-card .kicker{display:block;margin-bottom:1.6rem;}
-  .detail-row{display:flex;flex-direction:column;align-items:center;gap:.38rem;}
-  .detail-badge{
-    width:58px;height:58px;border-radius:50%;
-    display:flex;align-items:center;justify-content:center;
-    background:var(--red);color:var(--gold-light);
-    font-family:var(--kai);font-size:1.7rem;
-    border:1px solid var(--gold);box-shadow:0 6px 14px rgba(158,27,27,.28);
-    margin-bottom:.6rem;
+  .detail-item + .detail-item{margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid var(--line);}
+  .detail-label{
+    color:var(--red);font-size:clamp(1rem,3.7vw,1.2rem);
+    letter-spacing:.32em;margin-bottom:.5rem;padding-left:.32em;
   }
   .detail-main{
-    font-family:var(--kai);color:var(--ink);
-    font-size:clamp(1.45rem,5.4vw,1.95rem);letter-spacing:.08em;line-height:1.5;
+    color:var(--ink);font-size:clamp(1.4rem,5.4vw,1.85rem);
+    letter-spacing:.06em;line-height:1.5;
   }
   .detail-time{
-    font-family:var(--kai);color:var(--red);
-    font-size:clamp(1.2rem,4.4vw,1.52rem);letter-spacing:.12em;margin-top:.3rem;
+    margin-top:.28rem;color:var(--red);
+    font-size:clamp(1.15rem,4.4vw,1.45rem);letter-spacing:.1em;
   }
   .detail-sub{
-    font-family:var(--serif);color:var(--ink-soft);line-height:1.75;
-    font-size:clamp(1.05rem,3.7vw,1.26rem);letter-spacing:.06em;margin-top:.35rem;
-  }
-  .detail-div{
-    height:1px;margin:clamp(1.6rem,4vw,2.1rem) auto;width:78%;
-    background:linear-gradient(90deg,transparent,var(--gold),transparent);
+    margin-top:.32rem;color:var(--ink-soft);font-family:var(--serif);
+    font-size:clamp(1.02rem,3.7vw,1.2rem);letter-spacing:.05em;
   }
 
-  /* ============ 进场动画（克制：仅淡入 + 轻微上移） ============ */
-  .reveal{opacity:0;transform:translateY(16px);transition:opacity .7s ease,transform .7s ease;}
-  .reveal.in{opacity:1;transform:none;}
-
-  /* ============ 邀请正文 ============ */
-  .invite{margin-top:clamp(2.8rem,7vw,4.2rem);text-align:center;}
-  .invite-guest{
-    font-family:var(--kai);color:var(--ink-soft);line-height:1.7;
-    font-size:clamp(1.25rem,4.6vw,1.7rem);letter-spacing:.06em;margin-bottom:1.6rem;
-  }
-  .invite-guest .ig-fix{margin:0 .35em;color:var(--ink-soft);}
-  .invite-guest .ig-name{
-    display:inline-block;position:relative;vertical-align:baseline;padding:0 .16em .16em;
-  }
-  .invite-guest .ig-name b{
-    color:var(--red);font-weight:600;font-size:1.55em;letter-spacing:.05em;
-    text-shadow:0 2px 10px rgba(158,27,27,.16);
-  }
-  .invite-guest .ig-name i{
-    font-style:normal;color:var(--gold-dark);font-size:.94em;margin-left:.12em;letter-spacing:.04em;
-  }
-  .invite-guest .ig-name::after{
-    content:"";position:absolute;left:0;right:0;bottom:0;height:2px;border-radius:2px;
-    background:linear-gradient(90deg,transparent,var(--gold) 18%,var(--gold) 82%,transparent);
-  }
-  .invite-head{
-    font-family:var(--kai);color:var(--red);
-    font-size:clamp(2.1rem,9vw,3.2rem);letter-spacing:.1em;line-height:1.2;
-    text-shadow:0 3px 14px rgba(158,27,27,.12);
-  }
-  .invite-body{
-    font-family:var(--serif);color:var(--ink);
-    font-size:clamp(1.2rem,4.2vw,1.5rem);letter-spacing:.05em;line-height:2.05;
-    margin-top:1.3rem;
-  }
-  .invite-rule{
-    display:flex;align-items:center;justify-content:center;gap:.8rem;
-    margin:1.5rem 0 1.2rem;color:var(--gold);
-  }
-  .invite-rule span{height:1px;width:clamp(36px,12vw,80px);}
-  .invite-rule span:first-child{background:linear-gradient(90deg,transparent,var(--gold));}
-  .invite-rule span:last-child{background:linear-gradient(90deg,var(--gold),transparent);}
-  .invite-rule i{font-style:normal;color:var(--red);font-size:1.15rem;}
-  .invite-formal{
-    font-family:var(--kai);color:var(--gold-dark);
-    font-size:clamp(1.15rem,4.2vw,1.46rem);letter-spacing:.16em;
-  }
-  .invite-sign{
-    font-family:var(--kai);color:var(--red);
-    font-size:clamp(1.3rem,4.8vw,1.7rem);letter-spacing:.12em;margin-top:.6rem;
-  }
-  .invite-en{
-    font-family:var(--script);color:var(--gold-dark);
-    font-size:clamp(1.35rem,5vw,1.95rem);margin-top:.7rem;
-  }
-
-  /* ============ 页脚 ============ */
+  /* ============ 页脚（素：纸底 + 细线，非红块） ============ */
   footer{
-    margin-top:clamp(3.4rem,9vw,5.4rem);
-    background:var(--red);color:#f7e7cf;text-align:center;
-    padding:clamp(2.8rem,7vw,3.8rem) 1.4rem;
-    border-top:3px solid var(--gold);
+    margin-top:clamp(3.4rem,9vw,5rem);text-align:center;
+    padding:clamp(2.6rem,7vw,3.6rem) 1.4rem;border-top:1px solid var(--line);
   }
-  footer .hb{font-family:var(--kai);font-size:2.2rem;color:var(--gold-light);margin-bottom:.7rem;}
-  footer .nm{font-family:var(--kai);font-size:1.65rem;letter-spacing:.12em;}
-  footer .nm .amp{color:var(--gold-light);font-size:.8em;margin:0 .25em;}
-  footer .dt{margin-top:.55rem;letter-spacing:.18em;opacity:.92;font-family:var(--serif);font-size:1.1rem;}
-  footer .parents{
-    margin-top:.9rem;font-family:var(--kai);color:var(--gold-light);
-    font-size:1.2rem;letter-spacing:.1em;
-  }
-  footer .closing{margin-top:1.2rem;font-family:var(--script);font-size:1.7rem;color:var(--gold-light);}
-  footer .cr{margin-top:1.1rem;font-size:.82rem;opacity:.62;letter-spacing:.08em;}
+  footer .fb{font-size:1.9rem;color:var(--red);margin-bottom:.6rem;}
+  footer .fnm{font-size:1.55rem;color:var(--ink);letter-spacing:.12em;}
+  footer .fnm .sep{color:var(--line);margin:0 .32em;}
+  footer .fparents{margin-top:.85rem;color:var(--red);font-size:1.22rem;letter-spacing:.08em;}
+  footer .fdate{margin-top:.5rem;font-family:var(--serif);color:var(--ink-soft);letter-spacing:.16em;}
+  footer .fcr{margin-top:1rem;font-size:.82rem;color:var(--ink-soft);opacity:.7;letter-spacing:.06em;}
 
   /* ============ 图片加载失败占位 ============ */
-  .img-failed{position:relative;min-height:160px;background:linear-gradient(135deg,#f3e9d6,#fbf7ef);}
+  .img-failed{position:relative;min-height:160px;background:var(--paper-2);}
   .img-failed img{visibility:hidden;}
   .img-failed::after{
     content:"图片加载失败 ⟳";position:absolute;inset:0;
     display:flex;align-items:center;justify-content:center;
-    color:#a98b6a;font-size:1rem;font-family:var(--serif);letter-spacing:.1em;
+    color:var(--ink-soft);font-size:1rem;letter-spacing:.1em;
   }
 
-  /* ============ 悬浮音乐播放器（按钮加大，便于点按） ============ */
+  /* ============ 悬浮音乐播放器（素：单色圆钮，无旋转光泽） ============ */
   .player{
     position:fixed;
     right:max(1rem,env(safe-area-inset-right));
@@ -409,79 +213,48 @@
     -webkit-tap-highlight-color:transparent;
   }
   .player-disc{
-    width:64px;height:64px;border-radius:50%;
-    border:none;cursor:pointer;flex:none;padding:0;position:relative;
-    background:radial-gradient(circle at 50% 50%,
-      #fff 0 7%,var(--red) 8% 15%,#5a0f0f 16% 20%,var(--red-deep) 21% 100%);
-    box-shadow:0 8px 22px rgba(120,20,20,.42),inset 0 0 0 2px rgba(231,207,149,.6);
+    width:56px;height:56px;border-radius:50%;
+    border:1px solid var(--line);cursor:pointer;flex:none;padding:0;
+    background:var(--red);color:#f4e7c9;
     display:flex;align-items:center;justify-content:center;
-    animation:spin 9s linear infinite;animation-play-state:paused;
-    transition:transform .25s;
+    box-shadow:0 4px 12px rgba(80,30,20,.25);transition:transform .2s,box-shadow .2s;
   }
-  .player.playing .player-disc{animation-play-state:running;}
-  .player-disc:hover{transform:scale(1.06);}
-  .player-disc::after{
-    content:"";position:absolute;inset:0;border-radius:50%;
-    background:radial-gradient(circle at 32% 28%,rgba(255,255,255,.45),transparent 42%);
-    pointer-events:none;
-  }
-  .player-icon{
-    position:relative;z-index:2;color:var(--gold-light);
-    font-size:1.2rem;line-height:1;text-shadow:0 1px 3px rgba(0,0,0,.55);
-  }
-  @keyframes spin{to{transform:rotate(360deg);}}
+  .player-disc:hover{transform:scale(1.05);}
+  .player.playing .player-disc{box-shadow:0 0 0 4px rgba(140,43,34,.14),0 4px 12px rgba(80,30,20,.25);}
+  .player-icon{font-size:1.18rem;line-height:1;}
   .player-tip{
-    position:absolute;right:76px;top:50%;transform:translateY(-50%) translateX(8px);
-    white-space:nowrap;max-width:62vw;overflow:hidden;text-overflow:ellipsis;
-    background:rgba(40,10,10,.88);color:#f7e7cf;
-    font-family:var(--serif);font-size:.92rem;letter-spacing:.05em;
-    padding:.45rem .9rem;border-radius:999px;border:1px solid rgba(231,207,149,.42);
-    box-shadow:0 6px 18px rgba(0,0,0,.3);
+    position:absolute;right:68px;top:50%;transform:translateY(-50%) translateX(8px);
+    white-space:nowrap;max-width:60vw;overflow:hidden;text-overflow:ellipsis;
+    background:rgba(52,41,30,.9);color:#f4e7c9;
+    font-size:.9rem;letter-spacing:.05em;
+    padding:.45rem .9rem;border-radius:999px;border:1px solid var(--line);
+    box-shadow:0 6px 16px rgba(0,0,0,.22);
     opacity:0;pointer-events:none;transition:opacity .3s,transform .3s;
   }
   .player-tip.show,.player:hover .player-tip{opacity:1;transform:translateY(-50%) translateX(0);}
   @media (max-width:560px){
-    .player-disc{width:58px;height:58px;}
-    .player-tip{right:68px;font-size:.86rem;max-width:58vw;}
-  }
-  @media (max-width:480px){
-    .countdown{max-width:300px;margin-left:auto;margin-right:auto;}
-    .cd-cell{flex:1 1 calc(50% - .6rem);min-width:0;}
+    .player-disc{width:52px;height:52px;}
+    .player-tip{right:62px;font-size:.86rem;max-width:58vw;}
   }
   @media (prefers-reduced-motion:reduce){
-    .player .player-disc{animation:none;}
-    .scroll-cue{animation:none;}
     .reveal{transition:opacity .5s ease;transform:none;}
   }
 </style>
 </head>
 <body>
 
-<!-- 封面（文字封面） -->
+<!-- 封面 -->
 <header class="hero">
-  <div class="hero-frame"></div>
-  <div class="hero-content">
-    <div class="hero-title"><span>婚礼邀请函</span></div>
-    <span class="kicker">Our Children Are Getting Married</span>
-    <h1 class="names">郑尧<span class="amp">❤</span>黄梦婷</h1>
-    <div class="names-en">Zheng Yao &amp; Huang Mengting</div>
-    <div class="name-tags">
-      <span class="ntag"><b id="tagZheng">儿子</b>郑尧</span>
-      <span class="ntag"><b id="tagHuang">儿媳</b>黄梦婷</span>
+  <div class="hero-inner">
+    <div class="hero-label">婚礼邀请</div>
+    <h1 class="hero-names">郑尧<span class="sep">·</span>黄梦婷</h1>
+    <div class="hero-rel">
+      <span><b id="tagZheng">儿子</b>郑尧</span><span class="gap"></span><span><b id="tagHuang">儿媳</b>黄梦婷</span>
     </div>
-    <div class="hero-tagline" id="heroTagline">陌上花开，可缓缓归矣</div>
-    <div class="hero-rule"><span></span><i>囍</i><span></span></div>
-    <div class="hero-date" id="heroDate"><b>2026 · 10 · 04</b><span>星期日 · 上午 11:58</span></div>
+    <div class="rule"><i>囍</i></div>
+    <div class="hero-poem" id="heroTagline">陌上花开，可缓缓归矣</div>
+    <div class="hero-date"><b>2026 · 10 · 04</b><span>星期日 · 上午 11:58</span></div>
     <div class="hero-lunar">丙午年八月廿四辛亥日</div>
-
-    <div class="cd-title" id="cd-title">距离孩子的婚礼还有</div>
-    <div class="countdown" id="countdown">
-      <div class="cd-cell"><div class="cd-num" id="cd-days">--</div><div class="cd-label">DAYS 天</div></div>
-      <div class="cd-cell"><div class="cd-num" id="cd-hours">--</div><div class="cd-label">HOURS 时</div></div>
-      <div class="cd-cell"><div class="cd-num" id="cd-mins">--</div><div class="cd-label">MINS 分</div></div>
-      <div class="cd-cell"><div class="cd-num" id="cd-secs">--</div><div class="cd-label">SECS 秒</div></div>
-    </div>
-    <div id="cd-msg"></div>
   </div>
   <div class="scroll-cue">向下浏览<span class="arrow">⌄</span></div>
 </header>
@@ -489,31 +262,28 @@
 <main class="container">
 
   <!-- 开篇：囍 + 标题 + 两图 + 缘定 -->
-  <section id="pastlife">
-    <div class="lives-intro reveal">
+  <section>
+    <div class="intro reveal">
       <div class="seal">囍</div>
-      <div class="invite-head" id="weddingHeadline">我们的儿子要结婚啦</div>
-      <div class="lives-bless" id="blessLine">百年好合 · 永结同心</div>
+      <div class="intro-head" id="weddingHeadline">吾儿大婚</div>
+      <div class="intro-bless" id="blessLine">百年好合 · 永结同心</div>
     </div>
 
-    <!-- 婚纱照一 -->
-    <figure class="life reveal">
+    <figure class="photo reveal">
       <img src="images/20260602124932_55_4816.png" loading="lazy"
            alt="郑尧与黄梦婷 婚纱照"
-           onerror="this.closest('.life').classList.add('img-failed')">
+           onerror="this.closest('.photo').classList.add('img-failed')">
     </figure>
 
-    <div class="life-link reveal">
-      <span class="ll-top">在最好的年纪，遇见对的人</span>
-      <span class="ll-cn">缘 ❤ 定</span>
-      <span class="ll-en">Destined to Meet</span>
+    <div class="photo-link reveal">
+      <span class="pl-top">在最好的年纪，遇见对的人</span>
+      <span class="pl-cn">缘 · 定</span>
     </div>
 
-    <!-- 婚纱照二 -->
-    <figure class="life reveal">
+    <figure class="photo reveal">
       <img src="images/20260602125041_64_4816.png" loading="lazy"
            alt="郑尧与黄梦婷 婚纱照"
-           onerror="this.closest('.life').classList.add('img-failed')">
+           onerror="this.closest('.photo').classList.add('img-failed')">
     </figure>
   </section>
 
@@ -521,27 +291,24 @@
   <section class="invite reveal">
     <div class="invite-guest" id="inviteGuest" hidden><span class="ig-fix">致</span><span class="ig-name"><b id="guestName"></b><i id="guestTitle"></i></span><span class="ig-fix">启</span></div>
     <p class="invite-body" id="inviteBody">诚邀您拨冗光临，共贺儿子郑尧、儿媳黄梦婷新婚之喜</p>
-    <div class="invite-rule"><span></span><i>囍</i><span></span></div>
+    <div class="rule"><i>囍</i></div>
     <p class="invite-formal">敬备喜筵 · 恭候光临</p>
     <p class="invite-sign" id="inviteSign">父 郑理顺　母 姚流瑛　敬邀</p>
-    <p class="invite-en">We invite you to share our family's joy.</p>
   </section>
 
   <!-- 婚礼细节 -->
   <section class="details reveal">
     <div class="detail-card">
-      <span class="kicker">Save the Date</span>
-      <div class="detail-row">
-        <div class="detail-badge">時</div>
+      <div class="detail-item">
+        <div class="detail-label">婚礼吉日</div>
         <div class="detail-main">2026 年 10 月 4 日 · 星期日</div>
         <div class="detail-time">上午十一点五十八分（11:58）</div>
-        <div class="detail-sub">农历 丙午年八月廿四辛亥日<br>Sunday, Oct. 4th, 2026</div>
+        <div class="detail-sub">农历 丙午年八月廿四辛亥日</div>
       </div>
-      <div class="detail-div"></div>
-      <div class="detail-row">
-        <div class="detail-badge">址</div>
+      <div class="detail-item">
+        <div class="detail-label">宴会地址</div>
         <div class="detail-main">安徽省广德市 · 老四川大酒店</div>
-        <div class="detail-sub">三楼 · 天空之境宴会厅<br>Anhui · Guangde</div>
+        <div class="detail-sub">三楼 · 天空之境宴会厅</div>
       </div>
     </div>
   </section>
@@ -549,12 +316,11 @@
 </main>
 
 <footer>
-  <div class="hb">囍</div>
-  <div class="nm">郑尧<span class="amp">&amp;</span>黄梦婷</div>
-  <div class="dt">2026 · 10 · 04　永结同心</div>
-  <div class="parents" id="footerParents">男方父母　郑理顺 · 姚流瑛　敬邀</div>
-  <div class="closing">With Love &amp; Forever</div>
-  <div class="cr">© 2026 郑尧 &amp; 黄梦婷 · 诚邀您共赴这场盛宴</div>
+  <div class="fb">囍</div>
+  <div class="fnm">郑尧<span class="sep">·</span>黄梦婷</div>
+  <div class="fparents" id="footerParents">郑理顺　姚流瑛　携全家敬邀</div>
+  <div class="fdate">2026 · 10 · 04　永结同心</div>
+  <div class="fcr">© 2026 郑尧 · 黄梦婷</div>
 </footer>
 
 <!-- 悬浮音乐播放器 -->
@@ -570,25 +336,23 @@
   "use strict";
 
   // ===== 父母方信息：男方(郑尧父母) / 女方(梦婷父母) =====
-  // 男方称呼用「儿子」(直白)，女方称呼用「小女」(谦辞)；落款均用父母姓名。
+  // 男方称呼用「儿子」(直白)，女方称呼用「小女」(谦辞)；落款均用父母姓名，不带"男方/女方父母"字样。
   var SIDES = {
     groom: {
-      headline:   "我们的儿子要结婚啦",
+      headline:   "吾儿大婚",
       tagZheng:   "儿子",          // 郑尧 = 儿子
       tagHuang:   "儿媳",          // 黄梦婷 = 儿媳
       inviteBody: "诚邀您拨冗光临，共贺儿子郑尧、儿媳黄梦婷新婚之喜",
       father:     "郑理顺",
-      mother:     "姚流瑛",
-      famLabel:   "男方父母"
+      mother:     "姚流瑛"
     },
     bride: {
-      headline:   "我们的女儿要出嫁啦",
+      headline:   "小女于归",
       tagZheng:   "女婿",          // 郑尧 = 女婿
       tagHuang:   "小女",          // 黄梦婷 = 小女
       inviteBody: "诚邀您拨冗光临，共贺小女黄梦婷、女婿郑尧新婚之喜",
       father:     "黄兴武",
-      mother:     "黄慧",
-      famLabel:   "女方父母"
+      mother:     "黄慧"
     }
   };
 
@@ -611,53 +375,8 @@
     set("tagHuang",        S.tagHuang);
     set("inviteBody",      S.inviteBody);
     set("inviteSign",      "父 " + S.father + "　母 " + S.mother + "　敬邀");
-    set("footerParents",   S.famLabel + "　" + S.father + " · " + S.mother + "　敬邀");
-    document.title = "诚邀 · 郑尧 ❤ 黄梦婷 婚礼喜帖";
-  }
-
-  // ===== 倒计时 / 正计时 =====
-  var WEDDING     = new Date(2026, 9, 4, 11, 58, 0); // 婚礼开始 11:58（月份从0开始，9=十月）
-  var WEDDING_END = new Date(2026, 9, 4, 19,  0, 0); // 婚礼结束 当日 19:00（下午7点）
-  var cdPhase = "";
-  function pad(n){ return (n<10?"0":"") + n; }
-  function fillCells(total){
-    document.getElementById("cd-days").textContent  = Math.floor(total/86400);
-    document.getElementById("cd-hours").textContent = pad(Math.floor(total%86400/3600));
-    document.getElementById("cd-mins").textContent  = pad(Math.floor(total%3600/60));
-    document.getElementById("cd-secs").textContent  = pad(total%60);
-  }
-  function tick(){
-    var now   = new Date();
-    var title = document.getElementById("cd-title");
-    var grid  = document.getElementById("countdown");
-    var msg   = document.getElementById("cd-msg");
-    var hd    = document.getElementById("heroDate");
-    // 三阶段：婚礼前倒计时 → 婚礼进行中(11:58~19:00) → 婚礼已圆满完成
-    var phase = (now < WEDDING) ? "before" : (now < WEDDING_END ? "during" : "after");
-
-    if(phase !== cdPhase){
-      cdPhase = phase;
-      if(phase === "before"){
-        if(title){ title.style.display = ""; title.textContent = "距离孩子的婚礼还有"; }
-        if(grid)  grid.style.display = "";
-        if(msg){  msg.textContent = ""; msg.classList.remove("cd-final"); }
-        if(hd)    hd.innerHTML = "<b>2026 · 10 · 04</b><span>星期日 · 上午 11:58</span>";
-      } else if(phase === "during"){
-        if(title) title.style.display = "none";
-        if(grid)  grid.style.display = "none";
-        if(msg){  msg.textContent = "婚礼进行中 ❤"; msg.classList.add("cd-final"); }
-        if(hd)    hd.innerHTML = "<b>2026 · 10 · 04</b><span>婚礼当天 · 上午 11:58</span>";
-      } else {
-        if(title) title.style.display = "none";
-        if(grid)  grid.style.display = "none";
-        if(msg){  msg.textContent = "婚礼已圆满完成 ❤"; msg.classList.add("cd-final"); }
-        if(hd)    hd.innerHTML = "<b>2026 · 10 · 04</b><span>结婚纪念日</span>";
-      }
-    }
-
-    if(phase === "before"){
-      fillCells(Math.floor((WEDDING - now)/1000));
-    }
+    set("footerParents",   S.father + "　" + S.mother + "　携全家敬邀");
+    document.title = "郑尧 · 黄梦婷 · 婚礼请柬";
   }
 
   // ===== 进场动画 =====
@@ -842,8 +561,6 @@
   initGuest();
   initReveal();
   initPlayer();
-  tick();
-  setInterval(tick, 1000);
 })();
 </script>
 </body>
